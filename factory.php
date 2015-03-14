@@ -25,7 +25,8 @@ class ShapeFactory
 }
 
 $square = ShapeFactory::create('Square', 'Green');
-$square = ShapeFactory::create('Circle', 'Blue');
+$circle = ShapeFactory::create('Circle', 'Blue');
 
 print_r($square->getSizeandColor());
+print_r($circle->getSizeandColor());
 ?>
