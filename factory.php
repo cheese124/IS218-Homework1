@@ -6,7 +6,7 @@ class Automobile
 
 	public function __construct($form, $color)
 	{
-		$this->shapeSize = $form;
+		$this->shapeForm = $form;
 		$this->shapeColor = $color;
 	}
 
@@ -24,7 +24,8 @@ class ShapeFactory
 	}
 }
 
-$square = AutomobileFactory::create('Square', 'Green');
+$square = ShapeFactory::create('Square', 'Green');
+$square = ShapeFactory::create('Circle', 'Blue');
 
 print_r($square->getSizeandColor());
 ?>
