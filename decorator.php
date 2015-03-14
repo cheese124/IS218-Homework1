@@ -25,7 +25,6 @@ class BookTitleDecorator {
         $this->book = $book_in;
         $this->resetTitle();
     }   
-    //doing this so original object is not altered
     function resetTitle() {
         $this->title = $this->book->getTitle();
     }
@@ -44,23 +43,20 @@ class BookTitleExclaimDecorator extends BookTitleDecorator {
     }
 }
 
-class BookTitleStarDecorator extends BookTitleDecorator {
+class BookTitleqHashDecorator extends BookTitleDecorator {
     private $btd;
     public function __construct(BookTitleDecorator $btd_in) {
         $this->btd = $btd_in;
     }
-    function starTitle() {
-        $this->btd->title = Str_replace(" ","*",$this->btd->title);
+    function hashTitle() {
+        $this->btd->title = Str_replace(" ","#",$this->btd->title);
     }
 }
 
-  writeln('BEGIN TESTING DECORATOR PATTERN');
-  writeln('');
-
-  $patternBook = new Book('Gamma, Helm, Johnson, and Vlissides', 'Design Patterns');
+  $patternBook = new Book('The Adventures of Tom Sawyer' , 'Mark Twain');
  
   $decorator = new BookTitleDecorator($patternBook);
-  $starDecorator = new BookTitleStarDecorator($decorator);
+  $hashDecorator = new BookTitleqHashDecorator($decorator);
   $exclaimDecorator = new BookTitleExclaimDecorator($decorator);
  
   writeln('showing title : ');
@@ -73,8 +69,8 @@ class BookTitleStarDecorator extends BookTitleDecorator {
   writeln($decorator->showTitle());
   writeln('');
  
-  writeln('showing title after star added : ');
-  $starDecorator->starTitle();
+  writeln('showing title after hash added : ');
+  $hashDecorator->hashTitle();
   writeln($decorator->showTitle());
   writeln('');
  
@@ -83,7 +79,6 @@ class BookTitleStarDecorator extends BookTitleDecorator {
   writeln($decorator->showTitle());
   writeln('');
 
-  writeln('END TESTING DECORATOR PATTERN');
 
   function writeln($line_in) {
     echo $line_in."<br/>";
