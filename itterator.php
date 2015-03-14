@@ -104,9 +104,9 @@ class BookListReverseIterator extends BookListIterator {
     }
 }
 
-  $firstBook = new Book('Core PHP Programming, Third Edition', 'Atkinson and Suraski');
-  $secondBook = new Book('PHP Bible', 'Converse and Park');
-  $thirdBook = new Book('Design Patterns', 'Gamma, Helm, Johnson, and Vlissides');
+  $firstBook = new Book('A Game of Thrones', 'George R. R. Martin');
+  $secondBook = new Book('Fahrenheit 451', 'CRay Bradbury');
+  $thirdBook = new Book('Lord of the Flies', 'William Golding');
   $fourthBook = new Book('The Adventures of Tom Sawyer' , 'Mark Twain');
   
   $books = new BookList();
@@ -116,6 +116,7 @@ class BookListReverseIterator extends BookListIterator {
   $books->addBook($fourthBook);
  
   writeln('Iterator');
+  writeln('');
  
   $booksIterator = new BookListIterator($books);
 
@@ -124,26 +125,6 @@ class BookListReverseIterator extends BookListIterator {
     writeln($book->getAuthorAndTitle());
     writeln('');
   }
- 
-  $book = $booksIterator->getCurrentBook();
-  writeln($book->getAuthorAndTitle());
-  writeln('');  
-
-  writeln('Reverse Iterator');
-
-  $booksReverseIterator = new BookListReverseIterator($books);
-
-  while ($booksReverseIterator->hasNextBook()) {
-    $book = $booksReverseIterator->getNextBook();
-    writeln('getting next book with reverse iterator :');
-    writeln($book->getAuthorAndTitle());
-    writeln('');
-  }
- 
-  $book = $booksReverseIterator->getCurrentBook();
-  writeln('getting current book with reverse iterator :');
-  writeln($book->getAuthorAndTitle());
-
  
   function writeln($line_in) {
     echo $line_in."<br/>";
