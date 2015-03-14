@@ -1,31 +1,30 @@
 <?php
 class Automobile
 {
-	private $vehicleMake;
-	private $vehicleModel;
+	private $shapeForm;
+	private $shapeColor;
 
-	public function __construct($make, $model)
+	public function __construct($form, $color)
 	{
-		$this->vehicleMake = $make;
-		$this->vehicleModel = $model;
+		$this->shapeSize = $form;
+		$this->shapeColor = $color;
 	}
 
-	public function getMakeAndModel()
+	public function getSizeandColor()
 	{
-		return $this->vehicleMake . ' ' . $this->vehicleModel;
+		return $this->shapeForm . ' ' . $this->shapeColor;
 	}
 }
 
-class AutomobileFactory
+class ShapeFactory
 {
-	public static function create($make, $model)
+	public static function create($form, $color)
 	{
-		return new Automobile($make, $model);
+		return new Automobile($form, $color);
 	}
 }
 
-// have the factory create the Automobile object
-$veyron = AutomobileFactory::create('Bugatti', 'Veyron');
+$square = AutomobileFactory::create('Square', 'Green');
 
-print_r($veyron->getMakeAndModel()); // outputs "Bugatti Veyron"
+print_r($square->getSizeandColor());
 ?>
